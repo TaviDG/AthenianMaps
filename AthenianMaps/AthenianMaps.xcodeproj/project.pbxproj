@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		190C55422A12B1E0004C01AA /* AthenianMapsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55412A12B1E0004C01AA /* AthenianMapsApp.swift */; };
+		190C55442A12B1E0004C01AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55432A12B1E0004C01AA /* ContentView.swift */; };
+		190C55462A12B1E2004C01AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190C55452A12B1E2004C01AA /* Assets.xcassets */; };
+		190C55492A12B1E2004C01AA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 190C55482A12B1E2004C01AA /* Preview Assets.xcassets */; };
+		190C55532A12B1E2004C01AA /* AthenianMapsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55522A12B1E2004C01AA /* AthenianMapsTests.swift */; };
+		190C555D2A12B1E2004C01AA /* AthenianMapsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C555C2A12B1E2004C01AA /* AthenianMapsUITests.swift */; };
+		190C555F2A12B1E2004C01AA /* AthenianMapsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C555E2A12B1E2004C01AA /* AthenianMapsUITestsLaunchTests.swift */; };
+		190C55AD2A168E00004C01AA /* ParkMapOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55AC2A168E00004C01AA /* ParkMapOverlay.swift */; };
+		190C55AF2A168E01004C01AA /* ParkMapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55AE2A168E01004C01AA /* ParkMapOverlayView.swift */; };
+		190C55B02A168E8F004C01AA /* AttractionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55AA2A168D65004C01AA /* AttractionAnnotation.swift */; };
+		190C55B12A168E92004C01AA /* AttractionAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190C55AB2A168D65004C01AA /* AttractionAnnotationView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		190C554F2A12B1E2004C01AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 190C55362A12B1E0004C01AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 190C553D2A12B1E0004C01AA;
+			remoteInfo = AthenianMaps;
+		};
+		190C55592A12B1E2004C01AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 190C55362A12B1E0004C01AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 190C553D2A12B1E0004C01AA;
+			remoteInfo = AthenianMaps;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		190C553E2A12B1E0004C01AA /* AthenianMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AthenianMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		190C55412A12B1E0004C01AA /* AthenianMapsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenianMapsApp.swift; sourceTree = "<group>"; };
+		190C55432A12B1E0004C01AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		190C55452A12B1E2004C01AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		190C55482A12B1E2004C01AA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		190C554E2A12B1E2004C01AA /* AthenianMapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AthenianMapsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		190C55522A12B1E2004C01AA /* AthenianMapsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenianMapsTests.swift; sourceTree = "<group>"; };
+		190C55582A12B1E2004C01AA /* AthenianMapsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AthenianMapsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		190C555C2A12B1E2004C01AA /* AthenianMapsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenianMapsUITests.swift; sourceTree = "<group>"; };
+		190C555E2A12B1E2004C01AA /* AthenianMapsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthenianMapsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		190C55AA2A168D65004C01AA /* AttractionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionAnnotation.swift; sourceTree = "<group>"; };
+		190C55AB2A168D65004C01AA /* AttractionAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionAnnotationView.swift; sourceTree = "<group>"; };
+		190C55AC2A168E00004C01AA /* ParkMapOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkMapOverlay.swift; sourceTree = "<group>"; };
+		190C55AE2A168E01004C01AA /* ParkMapOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkMapOverlayView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		190C553B2A12B1E0004C01AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C554B2A12B1E2004C01AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C55552A12B1E2004C01AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		190C55352A12B1E0004C01AA = {
+			isa = PBXGroup;
+			children = (
+				190C55402A12B1E0004C01AA /* AthenianMaps */,
+				190C55512A12B1E2004C01AA /* AthenianMapsTests */,
+				190C555B2A12B1E2004C01AA /* AthenianMapsUITests */,
+				190C553F2A12B1E0004C01AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		190C553F2A12B1E0004C01AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				190C553E2A12B1E0004C01AA /* AthenianMaps.app */,
+				190C554E2A12B1E2004C01AA /* AthenianMapsTests.xctest */,
+				190C55582A12B1E2004C01AA /* AthenianMapsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		190C55402A12B1E0004C01AA /* AthenianMaps */ = {
+			isa = PBXGroup;
+			children = (
+				190C55AC2A168E00004C01AA /* ParkMapOverlay.swift */,
+				190C55AE2A168E01004C01AA /* ParkMapOverlayView.swift */,
+				190C55AA2A168D65004C01AA /* AttractionAnnotation.swift */,
+				190C55AB2A168D65004C01AA /* AttractionAnnotationView.swift */,
+				190C55412A12B1E0004C01AA /* AthenianMapsApp.swift */,
+				190C55432A12B1E0004C01AA /* ContentView.swift */,
+				190C55452A12B1E2004C01AA /* Assets.xcassets */,
+				190C55472A12B1E2004C01AA /* Preview Content */,
+			);
+			path = AthenianMaps;
+			sourceTree = "<group>";
+		};
+		190C55472A12B1E2004C01AA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				190C55482A12B1E2004C01AA /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		190C55512A12B1E2004C01AA /* AthenianMapsTests */ = {
+			isa = PBXGroup;
+			children = (
+				190C55522A12B1E2004C01AA /* AthenianMapsTests.swift */,
+			);
+			path = AthenianMapsTests;
+			sourceTree = "<group>";
+		};
+		190C555B2A12B1E2004C01AA /* AthenianMapsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				190C555C2A12B1E2004C01AA /* AthenianMapsUITests.swift */,
+				190C555E2A12B1E2004C01AA /* AthenianMapsUITestsLaunchTests.swift */,
+			);
+			path = AthenianMapsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		190C553D2A12B1E0004C01AA /* AthenianMaps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190C55622A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMaps" */;
+			buildPhases = (
+				190C553A2A12B1E0004C01AA /* Sources */,
+				190C553B2A12B1E0004C01AA /* Frameworks */,
+				190C553C2A12B1E0004C01AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AthenianMaps;
+			productName = AthenianMaps;
+			productReference = 190C553E2A12B1E0004C01AA /* AthenianMaps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		190C554D2A12B1E2004C01AA /* AthenianMapsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190C55652A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMapsTests" */;
+			buildPhases = (
+				190C554A2A12B1E2004C01AA /* Sources */,
+				190C554B2A12B1E2004C01AA /* Frameworks */,
+				190C554C2A12B1E2004C01AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				190C55502A12B1E2004C01AA /* PBXTargetDependency */,
+			);
+			name = AthenianMapsTests;
+			productName = AthenianMapsTests;
+			productReference = 190C554E2A12B1E2004C01AA /* AthenianMapsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		190C55572A12B1E2004C01AA /* AthenianMapsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 190C55682A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMapsUITests" */;
+			buildPhases = (
+				190C55542A12B1E2004C01AA /* Sources */,
+				190C55552A12B1E2004C01AA /* Frameworks */,
+				190C55562A12B1E2004C01AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				190C555A2A12B1E2004C01AA /* PBXTargetDependency */,
+			);
+			name = AthenianMapsUITests;
+			productName = AthenianMapsUITests;
+			productReference = 190C55582A12B1E2004C01AA /* AthenianMapsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		190C55362A12B1E0004C01AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					190C553D2A12B1E0004C01AA = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					190C554D2A12B1E2004C01AA = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 190C553D2A12B1E0004C01AA;
+					};
+					190C55572A12B1E2004C01AA = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 190C553D2A12B1E0004C01AA;
+					};
+				};
+			};
+			buildConfigurationList = 190C55392A12B1E0004C01AA /* Build configuration list for PBXProject "AthenianMaps" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 190C55352A12B1E0004C01AA;
+			productRefGroup = 190C553F2A12B1E0004C01AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				190C553D2A12B1E0004C01AA /* AthenianMaps */,
+				190C554D2A12B1E2004C01AA /* AthenianMapsTests */,
+				190C55572A12B1E2004C01AA /* AthenianMapsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		190C553C2A12B1E0004C01AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190C55492A12B1E2004C01AA /* Preview Assets.xcassets in Resources */,
+				190C55462A12B1E2004C01AA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C554C2A12B1E2004C01AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C55562A12B1E2004C01AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		190C553A2A12B1E0004C01AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190C55AF2A168E01004C01AA /* ParkMapOverlayView.swift in Sources */,
+				190C55442A12B1E0004C01AA /* ContentView.swift in Sources */,
+				190C55B12A168E92004C01AA /* AttractionAnnotationView.swift in Sources */,
+				190C55422A12B1E0004C01AA /* AthenianMapsApp.swift in Sources */,
+				190C55B02A168E8F004C01AA /* AttractionAnnotation.swift in Sources */,
+				190C55AD2A168E00004C01AA /* ParkMapOverlay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C554A2A12B1E2004C01AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190C55532A12B1E2004C01AA /* AthenianMapsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		190C55542A12B1E2004C01AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				190C555D2A12B1E2004C01AA /* AthenianMapsUITests.swift in Sources */,
+				190C555F2A12B1E2004C01AA /* AthenianMapsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		190C55502A12B1E2004C01AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 190C553D2A12B1E0004C01AA /* AthenianMaps */;
+			targetProxy = 190C554F2A12B1E2004C01AA /* PBXContainerItemProxy */;
+		};
+		190C555A2A12B1E2004C01AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 190C553D2A12B1E0004C01AA /* AthenianMaps */;
+			targetProxy = 190C55592A12B1E2004C01AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		190C55602A12B1E2004C01AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		190C55612A12B1E2004C01AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		190C55632A12B1E2004C01AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AthenianMaps/Preview Content\"";
+				DEVELOPMENT_TEAM = CBND793QHS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		190C55642A12B1E2004C01AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AthenianMaps/Preview Content\"";
+				DEVELOPMENT_TEAM = CBND793QHS;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMaps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		190C55662A12B1E2004C01AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CBND793QHS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMapsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AthenianMaps.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AthenianMaps";
+			};
+			name = Debug;
+		};
+		190C55672A12B1E2004C01AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CBND793QHS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMapsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AthenianMaps.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AthenianMaps";
+			};
+			name = Release;
+		};
+		190C55692A12B1E2004C01AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CBND793QHS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMapsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AthenianMaps;
+			};
+			name = Debug;
+		};
+		190C556A2A12B1E2004C01AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CBND793QHS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.unmatch.AthenianMapsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AthenianMaps;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		190C55392A12B1E0004C01AA /* Build configuration list for PBXProject "AthenianMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190C55602A12B1E2004C01AA /* Debug */,
+				190C55612A12B1E2004C01AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190C55622A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMaps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190C55632A12B1E2004C01AA /* Debug */,
+				190C55642A12B1E2004C01AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190C55652A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMapsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190C55662A12B1E2004C01AA /* Debug */,
+				190C55672A12B1E2004C01AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		190C55682A12B1E2004C01AA /* Build configuration list for PBXNativeTarget "AthenianMapsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				190C55692A12B1E2004C01AA /* Debug */,
+				190C556A2A12B1E2004C01AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 190C55362A12B1E0004C01AA /* Project object */;
+}

@@ -487,7 +487,7 @@ g.addEdge(id1: "42", id2: "43", weight: 110)
 //    destination = readLine()!
 //}
 
-let path = g.dijkstra(source: g.vertexID["CFTA"]!, destination: g.vertexID["House 3"]!)
+let path = g.dijkstra(source: g.vertexID["Knoll 5-8"]!, destination: g.vertexID["CFTA"]!)
 var str = ""
 for i in 0..<path.path.count{
     if i == 0{
