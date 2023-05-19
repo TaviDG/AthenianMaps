@@ -73,20 +73,92 @@ struct ContentView: View {
     @State var mapPins = false
     @State var mapCharacterLocation = false
     @State var mapRoute = false
-
+    @State var distance = ""
+    @State var time = ""
+    var graph = DijkstraGraph()
+    @State var path: DijkstraGraph.Path? = nil
+    @State var destination = ""
+    @State var location = ""
     var body: some View {
       VStack {
           Text("Athenian Maps").fontWeight(.bold)
               .font(.title)
           MapView().cornerRadius(20).padding(15)
-          Button("Show Route"){
-              print("button tapped")
-              addRoute()
+          HStack{
+              Picker("Select current location", selection: $location) {
+                  Text("Location")
+                  ForEach(graph.labelList, id: \.self) {
+                        Text($0)
+                    }
+              }.pickerStyle(.menu)
+                  .onChange(of: location) { location in
+                      
+                          updateRoute() }
+              Picker("Select destination", selection: $destination) {
+                  Text("Destination")
+                  ForEach(graph.labelList, id: \.self) {
+                        Text($0)
+                    }
+              }.pickerStyle(.menu)
+                  .onChange(of: destination) { destination in
+                      updateRoute() }
+                  
+
           }
+//          Button("Show Route"){
+//              print("button tapped")
+//              path = graph.dijkstra(source: "1", destination: "2")
+//              addRoute()
+//              distance = String(path!.weight) + " ft"
+//              let seconds = Double(path!.weight)/4.7
+//              let minutes = seconds/60
+//              let roundedSeconds = round(seconds)
+//              let roundedMinutes = floor(minutes)
+//              if roundedMinutes == 0.0{
+//                  time = String(Int(roundedSeconds)) + " sec "
+//              }
+//              else{
+//                  time =  String(Int(roundedMinutes)) + " min " + String(Int(roundedSeconds)) + " sec "
+//              }
+//
+//          }
+//
+          HStack{
+              Spacer()
+              Text(time).padding()
+              Spacer()
+              Text(distance).padding()
+              Spacer()
+          }
+          
           
 
 
       }
+    }
+        
+    func updateRoute(){
+        if !(graph.vertexID[location] == nil || graph.vertexID[destination] == nil || location == destination){
+            path = graph.dijkstra(source: graph.vertexID[location]!, destination: graph.vertexID[destination]!)
+            addRoute()
+            distance = String(path!.weight) + " ft"
+            let seconds = Double(path!.weight)/4.7
+            let minutes = seconds/60
+            let roundedSeconds = round(seconds)
+            let roundedMinutes = floor(minutes)
+            if roundedMinutes == 0.0{
+                time = String(Int(roundedSeconds)) + " sec "
+            }
+            else{
+                time =  String(Int(roundedMinutes)) + " min " + String(Int(roundedSeconds)) + " sec "
+            }
+        }
+        else if location == destination{
+            time = "0 sec"
+            distance = "0 ft"
+            mapView.removeOverlays(mapView.overlays)
+        }
+        
     }
 
 //    func addOverlay() {
@@ -112,34 +184,36 @@ struct ContentView: View {
 //    }
 //
     func addRoute() {
+        
 
       print("route added")
-        let coords = [CLLocationCoordinate2D(latitude: 37.83415, longitude: -121.95068),CLLocationCoordinate2D(latitude: 37.83510, longitude: -121.94929)]
-        let myPolyline = MKPolyline(coordinates: coords, count: coords.count)
+        var coordList:[CLLocationCoordinate2D] = []
+        coordList.append(CLLocationCoordinate2D(latitude: path!.path[0].source.coords[0], longitude: path!.path[0].source.coords[1]))
+        
+        for edge in path!.path{
+            coordList.append(CLLocationCoordinate2D(latitude: edge.destination.coords[0], longitude: edge.destination.coords[1]))
+        }
+        let myPolyline = MKPolyline(coordinates: coordList, count: coordList.count)
 
       mapView.addOverlay(myPolyline)
     }
-//
-//    func addBoundary() {
-//      mapView.addOverlay(MKPolygon(coordinates: park.boundary, count: park.boundary.count))
-//    }
-//
+
 //    func addCharacterLocation() {
 //      mapView.addOverlay(Character(filename: "BatmanLocations", color: .blue))
 //      mapView.addOverlay(Character(filename: "TazLocations", color: .orange))
 //      mapView.addOverlay(Character(filename: "TweetyBirdLocations", color: .yellow))
 //    }
 //
-//    func updateMapOverlayViews() {
-//      mapView.removeAnnotations(mapView.annotations)
-//      mapView.removeOverlays(mapView.overlays)
-//
+    func updateMapOverlayViews() {
+      mapView.removeAnnotations(mapView.annotations)
+      mapView.removeOverlays(mapView.overlays)
+
 //      if mapBoundary { addBoundary() }
 //      if mapOverlay { addOverlay() }
 //      if mapPins { addAttractionPins() }
 //      if mapCharacterLocation { addCharacterLocation() }
-//      if mapRoute { addRoute() }
-//    }
+      if mapRoute { addRoute() }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
