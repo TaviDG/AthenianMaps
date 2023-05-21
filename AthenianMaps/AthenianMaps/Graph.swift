@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 class DijkstraGraph {
     var vertices: [String: WeightedVertex]
@@ -190,9 +191,8 @@ class DijkstraGraph {
         }
     }
     
-    // This method carries out Dijkstra's algorithm
-    // The algorithm returns a Dictionary for the distances to each node
-    func dijkstra(source: String,destination: String) -> Path{
+
+    func aStar(source: String,target: String) -> Path{
         var visited = Set<String>()
         var distances = [String: Int]()
         var paths  = [String: [DijkstraEdge]]()
@@ -202,10 +202,10 @@ class DijkstraGraph {
         }
         var frontier = PriorityQueue<PQNode>(ascending: true)
         if let sourceVertex = vertices[source] {
-            frontier.push(PQNode(v: sourceVertex, priority: 0))
+            frontier.push(PQNode(v: sourceVertex, priority: Int(CLLocation.distance(from: sourceVertex.coords, to: vertices[target]!.coords))))
             distances[source] = 0
         }
-        while !frontier.isEmpty && !(frontier.peek()?.v.id == destination){
+        while !frontier.isEmpty && !(frontier.peek()?.v.id == target){
             let v = frontier.pop()!.v
             if (!visited.contains(v.id)){
 //                print("Visiting " + v.id + String(distances[v.id]!))
@@ -221,12 +221,12 @@ class DijkstraGraph {
                         paths[destination.id]?.append(edge)
                     }
                    
-                    frontier.push(PQNode(v: destination, priority: distances[destination.id]!))
+                    frontier.push(PQNode(v: destination, priority: distances[destination.id]! + Int(CLLocation.distance(from: v.coords, to: vertices[target]!.coords))))
                     
                 }
             }
         }
-        let path = Path(s: source, d: destination, p: paths[destination]!, w: distances[destination]!)
+        let path = Path(s: source, d: target, p: paths[target]!, w: distances[target]!)
         return path
     }
     
@@ -251,13 +251,13 @@ class DijkstraGraph {
         var id: String
         var label: String
         var edges: [DijkstraEdge]
-        var coords: [Double]
+        var coords: CLLocationCoordinate2D
         
         init(id: String, label: String, coords : [Double]) {
             self.id = id
             self.label = label
             self.edges = []
-            self.coords = coords
+            self.coords = CLLocationCoordinate2D(latitude: coords[0], longitude: coords[1])
         }
     }
     
@@ -287,7 +287,7 @@ class DijkstraGraph {
         init(source: WeightedVertex, destination: WeightedVertex, weight: Int) {
             self.source = source
             self.destination = destination
-            self.weight = weight
+            self.weight = Int(3.28084 * CLLocation.distance(from: source.coords, to: destination.coords))
         }
         
         static func == (lhs: DijkstraEdge, rhs: DijkstraEdge) -> Bool {
@@ -466,4 +466,19 @@ extension PriorityQueue: CustomStringConvertible, CustomDebugStringConvertible {
     
     public var description: String { return heap.description }
     public var debugDescription: String { return heap.debugDescription }
+}
+
+extension CLLocation {
+    
+    /// Get distance between two points
+    ///
+    /// - Parameters:
+    ///   - from: first point
+    ///   - to: second point
+    /// - Returns: the distance in meters
+    class func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
+        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        return from.distance(from: to)
+    }
 }

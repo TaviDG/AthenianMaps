@@ -139,7 +139,7 @@ struct ContentView: View {
         
     func updateRoute(){
         if !(graph.vertexID[location] == nil || graph.vertexID[destination] == nil || location == destination){
-            path = graph.dijkstra(source: graph.vertexID[location]!, destination: graph.vertexID[destination]!)
+            path = graph.aStar(source: graph.vertexID[location]!, target: graph.vertexID[destination]!)
             addRoute()
             distance = String(path!.weight) + " ft"
             let seconds = Double(path!.weight)/4.7
@@ -188,10 +188,10 @@ struct ContentView: View {
 
       print("route added")
         var coordList:[CLLocationCoordinate2D] = []
-        coordList.append(CLLocationCoordinate2D(latitude: path!.path[0].source.coords[0], longitude: path!.path[0].source.coords[1]))
+        coordList.append(path!.path[0].source.coords)
         
         for edge in path!.path{
-            coordList.append(CLLocationCoordinate2D(latitude: edge.destination.coords[0], longitude: edge.destination.coords[1]))
+            coordList.append( edge.destination.coords)
         }
         let myPolyline = MKPolyline(coordinates: coordList, count: coordList.count)
 
