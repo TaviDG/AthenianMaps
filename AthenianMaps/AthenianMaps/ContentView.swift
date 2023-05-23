@@ -14,12 +14,14 @@ struct MapView: UIViewRepresentable {
   func makeUIView(context: Context) -> MKMapView {
     
 
-    let span = MKCoordinateSpan(latitudeDelta: 0.004, longitudeDelta: 0.004)
+    let span = MKCoordinateSpan(latitudeDelta: 0.0045, longitudeDelta: 0.0045)
       let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.834, longitude: -121.9496), span: span)
 
     mapView.region = region
     mapView.delegate = context.coordinator
-
+      
+      mapView.mapType = .satellite
+    
     return mapView
   }
 
@@ -29,20 +31,24 @@ struct MapView: UIViewRepresentable {
   // Acts as the MapView delegate
   class Coordinator: NSObject, MKMapViewDelegate {
     var parent: MapView
+      var color = 0
+    
 
     init(_ parent: MapView) {
       self.parent = parent
     }
 
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+      func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
       if overlay is MapOverlay {
         return MapOverlayView(
           overlay: overlay,
           overlayImage: UIImage(imageLiteralResourceName: "overlay_park"))
       } else if overlay is MKPolyline {
         let lineView = MKPolylineRenderer(overlay: overlay)
-        lineView.strokeColor = .green
-        lineView.lineWidth = 3
+          
+              lineView.strokeColor = .green
+          
+        lineView.lineWidth = 5
         return lineView
       } else if overlay is MKPolygon {
         let polygonView = MKPolygonRenderer(overlay: overlay)
@@ -79,6 +85,9 @@ struct ContentView: View {
     @State var path: DijkstraGraph.Path? = nil
     @State var destination = ""
     @State var location = ""
+    let locationLabels = ["Appletree","CIS","CFTA","Commons","Courtside","Creekside","Dase Center","House 2","House 3","House 9","Knoll 1-4","Knoll 5-8","Knoll 9/10","Library","Main Hall","Middlefield","Orchard","Parking Lot","Reinhardt","Ridgeview","Science Classrooms","Soccer Field","Student Store"]
+
+
     var body: some View {
       VStack {
           Text("Athenian Maps").fontWeight(.bold)
@@ -87,7 +96,7 @@ struct ContentView: View {
           HStack{
               Picker("Select current location", selection: $location) {
                   Text("Location")
-                  ForEach(graph.labelList, id: \.self) {
+                  ForEach(locationLabels, id: \.self) {
                         Text($0)
                     }
               }.pickerStyle(.menu)
@@ -96,7 +105,7 @@ struct ContentView: View {
                           updateRoute() }
               Picker("Select destination", selection: $destination) {
                   Text("Destination")
-                  ForEach(graph.labelList, id: \.self) {
+                  ForEach(locationLabels, id: \.self) {
                         Text($0)
                     }
               }.pickerStyle(.menu)
@@ -138,14 +147,16 @@ struct ContentView: View {
     }
         
     func updateRoute(){
+        mapView.removeOverlays(mapView.overlays)
         if !(graph.vertexID[location] == nil || graph.vertexID[destination] == nil || location == destination){
             path = graph.aStar(source: graph.vertexID[location]!, target: graph.vertexID[destination]!)
             addRoute()
             distance = String(path!.weight) + " ft"
             let seconds = Double(path!.weight)/4.7
             let minutes = seconds/60
-            let roundedSeconds = round(seconds)
+            
             let roundedMinutes = floor(minutes)
+            let roundedSeconds = round(seconds)-(roundedMinutes*60)
             if roundedMinutes == 0.0{
                 time = String(Int(roundedSeconds)) + " sec "
             }
@@ -156,7 +167,6 @@ struct ContentView: View {
         else if location == destination{
             time = "0 sec"
             distance = "0 ft"
-            mapView.removeOverlays(mapView.overlays)
         }
         
     }
