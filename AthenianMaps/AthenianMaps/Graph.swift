@@ -24,7 +24,7 @@ class DijkstraGraph {
         self.addVertex(id: "1", label: "Parking Lot North", coords: [37.83438,-121.95127])
         self.addVertex(id: "2", label: "Parking Lot South",coords: [37.83371,-121.95124])
         self.addVertex(id: "3", label: "Pickup Line", coords: [37.8345545,-121.9508982])
-        self.addVertex(id: "4", label: "CIS", coords: [37.8347184,-121.9504735])
+        self.addVertex(id: "4", label: "C.I.S.", coords: [37.8347184,-121.9504735])
         self.addVertex(id: "5", label: "Reinhardt North", coords: [37.8347306,-121.9503491])
         self.addVertex(id: "6", label: "Main Hall South", coords: [37.8348198, -121.9501043])
         self.addVertex(id: "7", label: "Commons North", coords: [37.8348945, -121.9498411])
@@ -41,7 +41,7 @@ class DijkstraGraph {
         self.addVertex(id: "18", label: "Science Hill (Bottom)", coords: [37.8352504, -121.9496601])
         self.addVertex(id: "19", label: "Soccer Field", coords: [37.8336958, -121.9510870])
         self.addVertex(id: "20", label: "CFTA Intersection", coords: [37.8357016, -121.9484377])
-        self.addVertex(id: "21", label: "CFTA", coords: [37.8363209, -121.9480786])
+        self.addVertex(id: "21", label: "C.F.T.A.", coords: [37.8363209, -121.9480786])
         self.addVertex(id: "22", label: "Commons/Middlefield Intersection", coords: [37.8346652, -121.9497861])
         self.addVertex(id: "23", label: "Commons South", coords: [37.8347192, -121.9497201])
         self.addVertex(id: "24", label: "Student Store", coords: [37.8344443, -121.9495682])
@@ -72,11 +72,11 @@ class DijkstraGraph {
         self.addVertex(id: "48", label: "Knoll 9/10", coords: [37.8352101, -121.9498361])
         self.addVertex(id: "49", label: "House 9 Intersection", coords: [37.8353846, -121.9501546])
         self.addVertex(id: "50", label: "Back Knoll Intersection", coords: [37.8352596, -121.9504872])
+        self.addVertex(id: "51", label: "Kitchen Bend", coords: [37.8349530, -121.9506988])
 
         self.addEdge(id1: "1", id2: "3", weight: 120)
         self.addEdge(id1: "1", id2: "2", weight: 200)
         self.addEdge(id1: "3", id2: "4", weight: 100)
-        self.addEdge(id1: "3", id2: "11", weight: 260)
         self.addEdge(id1: "4", id2: "5", weight: 100)
         self.addEdge(id1: "5", id2: "6", weight: 60)
         self.addEdge(id1: "11", id2: "12", weight: 30)
@@ -135,6 +135,8 @@ class DijkstraGraph {
         self.addEdge(id1: "42", id2: "43", weight: 110)
         self.addEdge(id1: "42", id2: "50", weight: 100)
         self.addEdge(id1: "50", id2: "10", weight: 0)
+        self.addEdge(id1: "3", id2: "51", weight: 0)
+        self.addEdge(id1: "51", id2: "11", weight: 0)
 //        paths = [:]
 //        distances = [:]
     }
