@@ -171,9 +171,12 @@ struct ContentView: View {
         print("location updated")
         let currentLocation = locationManager.location
         if currentLocation != nil{
-            let circle = MKCircle(center: locationManager.location!, radius: 2)
-            mapView.addOverlay(circle)
+//            let currentLocation = locationManager.location
+            mapView.removeOverlays(mapView.overlays)
+            let circle3 = MKCircle(center: locationManager.location!, radius: 2)
+            mapView.addOverlay(circle3)
             
+//
             var min = Int.max
             var closest = ""
             for label in locationLabels{
@@ -344,6 +347,8 @@ struct ContentView: View {
       mapView.addOverlay(myPolyline)
         mapView.addOverlay(circle)
         mapView.addOverlay(circle2)
+        
+        
     }
 
 //    func addCharacterLocation() {
