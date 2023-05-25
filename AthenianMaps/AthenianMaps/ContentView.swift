@@ -172,9 +172,8 @@ struct ContentView: View {
         let currentLocation = locationManager.location
         if currentLocation != nil{
 //            let currentLocation = locationManager.location
-            mapView.removeOverlays(mapView.overlays)
-            let circle3 = MKCircle(center: locationManager.location!, radius: 2)
-            mapView.addOverlay(circle3)
+            
+            
             
 //
             var min = Int.max
@@ -201,6 +200,7 @@ struct ContentView: View {
             print(closest)
             self.location = closest
             updateRoute()
+            
         }
     }
     func updateRoute(){
@@ -344,7 +344,11 @@ struct ContentView: View {
     
         let circle = MKCircle(center: coordList[coordList.count-1], radius: 3)
         let circle2 = MKCircle(center: coordList[0], radius: 1)
-
+        if locationManager.location != nil{
+            let circle3 = MKCircle(center: locationManager.location!, radius: 2)
+            mapView.addOverlay(circle3)
+        }
+        
       mapView.addOverlay(myPolyline)
         mapView.addOverlay(circle)
         mapView.addOverlay(circle2)
