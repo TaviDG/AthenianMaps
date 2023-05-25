@@ -77,7 +77,7 @@ struct MapView: UIViewRepresentable {
 
 
 struct ContentView: View {
-    @StateObject var locationManager = LocationManager()
+    var locationManager = LocationManager()
     @State var mapBoundary = false
     @State var mapOverlay = false
     @State var mapPins = false
@@ -142,17 +142,22 @@ struct ContentView: View {
           HStack{
               Spacer()
               Text(ETA).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding()
+              Spacer()
               Text(time).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding()
-              
+              Spacer()
               Text(distance).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding().padding()
               Spacer()
           }
           Spacer()
           HStack{
+              Spacer()
               Text("developer@unmatch.xyz").accentColor(.orange).font(.custom("Arial", size: 8.0)).padding()
-              Text("Created by Tavi Greenfield '23").foregroundColor(.orange).font(.custom("Arial", size: 8.0)).padding()
+              Spacer()
+              Text("By Tavi Greenfield '23").foregroundColor(.orange).font(.custom("Arial", size: 8.0)).padding()
+              Spacer()
               Link("Privacy Policy",
                    destination: URL(string: "https://www.termsfeed.com/live/2e67cb15-2cff-4fb6-8ad9-e88a5bcf3a64")!).font(.custom("Arial", size: 8.0)).accentColor(.orange).padding()
+              Spacer()
           }
           
           
@@ -163,6 +168,7 @@ struct ContentView: View {
     }
      
     func updateLocation(){
+        print("location updated")
         let currentLocation = locationManager.location
         if currentLocation != nil{
             let circle = MKCircle(center: locationManager.location!, radius: 2)
@@ -282,8 +288,12 @@ struct ContentView: View {
                 cminutes -= 60
                 chours += 1
             }
+            print(chours)
             if chours > 12{
                 chours -= 12
+            }
+            if chours == 0 {
+                chours += 12
             }
             ETA = "\(chours):\(cminutes)"
         }
