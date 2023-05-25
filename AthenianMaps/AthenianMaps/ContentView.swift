@@ -7,6 +7,8 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
+import CoreLocationUI
 
 let mapView = MKMapView(frame: UIScreen.main.bounds)
 
@@ -14,7 +16,7 @@ struct MapView: UIViewRepresentable {
   func makeUIView(context: Context) -> MKMapView {
     
 
-    let span = MKCoordinateSpan(latitudeDelta: 0.0045, longitudeDelta: 0.0045)
+      let span = MKCoordinateSpan(latitudeDelta: 0.0045, longitudeDelta: 0.0045)
       let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.834, longitude: -121.9496), span: span)
 
     mapView.region = region
@@ -75,7 +77,7 @@ struct MapView: UIViewRepresentable {
 
 
 struct ContentView: View {
-    
+    @StateObject var locationManager = LocationManager()
     @State var mapBoundary = false
     @State var mapOverlay = false
     @State var mapPins = false
@@ -88,7 +90,7 @@ struct ContentView: View {
     @State var path: DijkstraGraph.Path? = nil
     @State var destination = ""
     @State var location = ""
-    let locationLabels = ["Appletree","C.I.S.","C.F.T.A.","Commons","Courtside","Creekside","Dase Center","House 2","House 3","House 9","Knoll 1-4","Knoll 5-8","Knoll 9/10","Library","Main Hall","Middlefield","Orchard","Parking Lot","Reinhardt","Ridgeview","Science Classrooms","Soccer Field","Student Store"]
+    let locationLabels = ["Appletree","C.I.S.","C.F.T.A.","Commons","Courtside","Creekside","Dase Center/MPR","House 2","House 3","House 9","Knoll 1-4","Knoll 5-8","Knoll 9/10","Library","Main Hall","Middlefield","Orchard","Parking Lot","Reinhardt","Ridgeview","Science Classrooms","Soccer Field","Student Store"]
     let locationDict = [
         "Parking Lot": ["North", "South"],
         "Reinhardt": ["North", "South"],
@@ -113,6 +115,9 @@ struct ContentView: View {
           
           MapView().cornerRadius(20).padding(10).background(Color.orange).cornerRadius(30).padding(7)
           HStack{
+              Button(action:{
+                  updateLocation()
+              }, label: {Image(systemName: "location").foregroundColor(.orange)})
               Picker("Select current location", selection: $location) {
                   Text("Location")
                   ForEach(locationLabels, id: \.self) {
@@ -136,18 +141,18 @@ struct ContentView: View {
           }
           HStack{
               Spacer()
-              Text(ETA).font(.title2).fontWeight(.bold).foregroundColor(Color.orange).padding()
-              Text(time).font(.title2).fontWeight(.bold).foregroundColor(Color.orange).padding()
+              Text(ETA).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding()
+              Text(time).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding()
               
-              Text(distance).font(.title2).fontWeight(.bold).foregroundColor(Color.orange).padding().padding()
+              Text(distance).font(.title3).fontWeight(.bold).foregroundColor(Color.orange).padding().padding()
               Spacer()
           }
           Spacer()
           HStack{
-              Text("developer@unmatch.xyz").accentColor(.orange).font(.footnote).padding()
-              
+              Text("developer@unmatch.xyz").accentColor(.orange).font(.custom("Arial", size: 8.0)).padding()
+              Text("Created by Tavi Greenfield '23").foregroundColor(.orange).font(.custom("Arial", size: 8.0)).padding()
               Link("Privacy Policy",
-                   destination: URL(string: "https://www.termsfeed.com/live/2e67cb15-2cff-4fb6-8ad9-e88a5bcf3a64")!).font(.footnote).accentColor(.orange).padding()
+                   destination: URL(string: "https://www.termsfeed.com/live/2e67cb15-2cff-4fb6-8ad9-e88a5bcf3a64")!).font(.custom("Arial", size: 8.0)).accentColor(.orange).padding()
           }
           
           
@@ -156,9 +161,51 @@ struct ContentView: View {
       }.background(Color.black.edgesIgnoringSafeArea(.all))
       
     }
-        
+     
+    func updateLocation(){
+        let currentLocation = locationManager.location
+        if currentLocation != nil{
+            let circle = MKCircle(center: locationManager.location!, radius: 2)
+            mapView.addOverlay(circle)
+            
+            var min = Int.max
+            var closest = ""
+            for label in locationLabels{
+                if locationDict[label] == nil{
+                    let vertex = graph.vertices[graph.vertexID[label]!]
+                    if CLLocation.distance(from: vertex!.coords, to: currentLocation!) < Double(min) {
+                        min = Int(CLLocation.distance(from: vertex!.coords, to: currentLocation!))
+                        closest = label
+                    }
+                }else{
+                    for ext in locationDict[label]!{
+                        let vertex = graph.vertices[graph.vertexID[label + " " + ext]!]
+                        if CLLocation.distance(from: vertex!.coords, to: currentLocation!) < Double(min) {
+                            min = Int(CLLocation.distance(from: vertex!.coords, to: currentLocation!))
+                            closest = label
+                        }
+                    }
+                }
+                
+                
+            }
+            print(closest)
+            self.location = closest
+        }
+    }
     func updateRoute(){
         mapView.removeOverlays(mapView.overlays)
+        
+//        if locationManager.location != nil{
+//            print(locationManager.location)
+//            let circle = MKCircle(center: locationManager.location!, radius: 3)
+//            mapView.addOverlay(circle)
+//        }else{
+//            print("nil")
+//        }
+        
+        
+        
         if (locationLabels.contains(location) && locationLabels.contains(destination) && location != destination){
             if (locationDict[location]==nil && locationDict[destination]==nil){
                 path = graph.aStar(source: graph.vertexID[location]!, target: graph.vertexID[destination]!)
@@ -282,9 +329,11 @@ struct ContentView: View {
         let myPolyline = MKPolyline(coordinates: coordList, count: coordList.count)
     
         let circle = MKCircle(center: coordList[coordList.count-1], radius: 3)
+        let circle2 = MKCircle(center: coordList[0], radius: 1)
 
       mapView.addOverlay(myPolyline)
         mapView.addOverlay(circle)
+        mapView.addOverlay(circle2)
     }
 
 //    func addCharacterLocation() {
@@ -302,6 +351,29 @@ struct ContentView: View {
 //      if mapPins { addAttractionPins() }
 //      if mapCharacterLocation { addCharacterLocation() }
       if mapRoute { addRoute() }
+    }
+}
+
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    let manager = CLLocationManager()
+
+    @Published var location: CLLocationCoordinate2D?
+
+    override init() {
+        super.init()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.distanceFilter = kCLDistanceFilterNone
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+
+    func requestLocation() {
+        manager.requestLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        location = locations.first?.coordinate
     }
 }
 
