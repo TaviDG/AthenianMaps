@@ -200,6 +200,7 @@ struct ContentView: View {
             }
             print(closest)
             self.location = closest
+            updateRoute()
         }
     }
     func updateRoute(){
