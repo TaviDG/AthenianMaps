@@ -90,7 +90,7 @@ struct ContentView: View {
     @State var path: DijkstraGraph.Path? = nil
     @State var destination = ""
     @State var location = ""
-    let locationLabels = ["Appletree","C.I.S.","C.F.T.A.","Commons","Courtside","Creekside","Dase Center/MPR","House 2","House 3","House 9","Knoll 1-4","Knoll 5-8","Knoll 9/10","Library","Main Hall","Middlefield","Orchard","Parking Lot","Reinhardt","Ridgeview","Science Classrooms","Soccer Field","Student Store"]
+    let locationLabels = ["Appletree","Baseball Field", "C.I.S.","C.F.T.A.","Commons","Courtside","Creekside","Dase Center/MPR","Gym","House 2","House 3","House 9","Knoll 1-4","Knoll 5-8","Knoll 9/10","Library","Main Hall","Middlefield","Middle School", "Orchard","Parking Lot","Reinhardt","Ridgeview","Science Classrooms","Soccer Field","Student Store", "Weight Room"]
     let locationDict = [
         "Parking Lot": ["North", "South"],
         "Reinhardt": ["North", "South"],
